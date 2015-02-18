@@ -26,6 +26,29 @@ If you choose not to use virtalenv, this is for you:
 
 ### Running the tool
 
-    $ ./loopback-dns.py
+    $ sudo ./loopback-dns.py
 
-And that's it. It should print out every DNS query it receives.
+And that's it. It should print out every DNS query it receives, and respond to the client with
+127.0.0.1.
+
+```
+dig google.com @localhost
+
+; <<>> DiG 9.8.3-P1 <<>> google.com @localhost
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 33184
+;; flags: qr rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;google.com.            IN  A
+
+;; ANSWER SECTION:
+google.com.     60  IN  A   127.0.0.1
+
+;; Query time: 4 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Wed Feb 18 10:02:23 2015
+;; MSG SIZE  rcvd: 44
+```
